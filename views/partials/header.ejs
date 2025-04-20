@@ -1,0 +1,28 @@
+<header>
+  <nav>
+    <% if (current_nav === 'dashboard') { %>
+    <!-- DASHBOARD CASE (Logout only) -->
+    <div class="nav-spacer">&nbsp;</div>
+    <form method="POST" action="/logout" class="nav-logout-form">
+      <button type="submit" class="nav-button">Logout</button>
+    </form>
+    <% } else { %>
+    <!-- ALL OTHER PAGES (SignUp + Login) -->
+    <a
+      href="/signup"
+      class="nav-button <%= current_nav === 'signup' ? 'inactive' : '' %>"
+    >
+      Sign Up
+    </a>
+    <a
+      href="/login"
+      class="nav-button <%= current_nav === 'login' ? 'inactive' : '' %>"
+    >
+      Login
+    </a>
+    <% } %>
+  </nav>
+  <div class="user_svg_container">
+    <img src="./chat.svg" alt="User Management App" />
+  </div>
+</header>

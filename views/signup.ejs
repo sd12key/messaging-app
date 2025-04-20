@@ -1,0 +1,59 @@
+<%- include('partials/head', { title: "Sign Up" }) %>
+<!---->
+<%- include('partials/header', { current_nav: "signup" }) %>
+<!---->
+<main class="main_container">
+  <h1>Create Account</h1>
+  <% if (typeof auth_error !== 'undefined' && auth_error) { %>
+  <div class="auth_error" id="auth_error_message"><%= auth_error %></div>
+  <% } %>
+  <form id="auth_form" action="/signup" method="POST">
+    <div class="form_inputs_container">
+      <div class="form_input_container">
+        <label for="username">Username:</label>
+        <input
+          type="text"
+          name="username"
+          id="username"
+          required
+          value="<%= typeof username_value !== 'undefined' ? username_value : '' %>"
+        />
+      </div>
+      <div class="form_input_container">
+        <label for="password">Password:</label>
+        <input type="password" name="password" id="password" required />
+      </div>
+      <div class="form_input_container">
+        <label for="reenter_password">Re-enter Password:</label>
+        <input
+          type="password"
+          name="reenter_password"
+          id="reenter_password"
+          required
+        />
+      </div>
+      <div class="checkbox_and_hide_button_container">
+        <div class="admin_checkbox_container">
+          <label class="label_admin_account" for="admin_checkbox">
+            <input type="checkbox" id="admin_checkbox" name="is_admin" <% if
+            (typeof is_admin !== 'undefined' && is_admin) { %>checked<% } %> />
+            <span class="custom_checkbox">&checkmark;</span>
+            <span class="admin_account_text">Admin Account</span>
+          </label>
+        </div>
+        <button type="button" id="show_hide_pwd">Show</button>
+      </div>
+    </div>
+    <span class="index_button_container">
+      <button class="home_button" onclick="window.location.href='/'">
+        Cancel
+      </button>
+      <button class="signup_button" type="submit" id="submit_button">
+        Register
+      </button>
+    </span>
+  </form>
+</main>
+<!---->
+<%- include('partials/footer') %>
+<script src="js/show_hide.js"></script>

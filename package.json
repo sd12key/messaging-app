@@ -1,0 +1,27 @@
+{
+  "name": "realtime-notifications",
+  "version": "1.0.0",
+  "description": "Send notifications to logged in users",
+  "main": "index.js",
+  "scripts": {
+    "start": "node --watch-path=./ index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Matthew English",
+  "license": "MIT",
+  "dependencies": {
+    "@types/bcrypt": "^5.0.2",
+    "@types/ejs": "^3.1.5",
+    "@types/express": "^5.0.1",
+    "@types/express-session": "^1.18.1",
+    "@types/express-ws": "^3.0.5",
+    "@types/mongoose": "^5.11.96",
+    "bcrypt": "^5.1.1",
+    "dotenv": "^16.5.0",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "express-session": "^1.18.1",
+    "express-ws": "^5.0.2",
+    "mongoose": "^8.13.2"
+  }
+}
