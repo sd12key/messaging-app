@@ -67,6 +67,7 @@ const MID = "_id";
 // const MONGO_DB_NAME = "notify_app";
 // const MONGO_URI = `mongodb://localhost:${MONGO_PORT}/${MONGO_DB_NAME}`;
 const MONGO_URI = process.env.MONGO_URI;
+// console.log(MONGO_URI);
 
 const USER_DB_MODEL_NAME = "user";
 const USER_DB_SCHEMA = new mongoose.Schema(
@@ -635,7 +636,8 @@ const generate_mock_users = (n_admins, n_users) => {
 mongoose
   .connect(MONGO_URI)
   .then(async () => {
-    console.log(`MongoDB running on ${MONGO_URI}`);
+    // console.log(`MongoDB running on ${MONGO_URI}`);
+    console.log("MongoDB connection established successfully");
 
     // seed logic here
     const user_count = await user.countDocuments();
