@@ -4,6 +4,8 @@ const session = require("express-session");
 const expressWs = require("express-ws");
 const path = require("path");
 const bcrypt = require("bcrypt");
+const axios = require("axios");
+const cron = require("node-cron");
 
 const SALT_ROUNDS = 10;
 
@@ -152,6 +154,15 @@ const notification = mongoose.model(
   NOTIFICATION_DB_MODEL_NAME,
   NOTIFICATION_DB_SCHEMA
 );
+
+// self-ping every 5 minutes (adjust as needed)
+cron.schedule("*/5 * * * *", () => {
+  console.log("Pinging self to stay awake...");
+  axios
+    .get("https://messaging-app-ezjt.onrender.com/")
+    .then(() => console.log("Ping successful!"))
+    .catch((err) => console.error("Ping failed:", err.message));
+});
 
 // logged in user (using session)
 let logged_in_users = [];
