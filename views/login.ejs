@@ -1,0 +1,47 @@
+<%- include('partials/head', { title: "Login" }) %>
+<!---->
+<%- include('partials/header', { current_nav: 'login' }) %>
+<!---->
+<main class="main_container">
+  <h1>Login</h1>
+  <% if (typeof auth_error !== 'undefined' && auth_error) { %>
+  <div class="auth_error" id="auth_error_message"><%= auth_error %></div>
+  <% } %>
+  <form id="auth_form" action="/login" method="POST">
+    <div class="form_inputs_container">
+      <div class="form_input_container">
+        <label for="username">Username:</label>
+        <input
+          type="text"
+          name="username"
+          id="username"
+          required
+          value="<%= typeof username_value !== 'undefined' ? username_value : '' %>"
+        />
+      </div>
+      <div class="form_input_container">
+        <label for="password">Password:</label>
+        <input type="password" name="password" id="password" required />
+      </div>
+      <div class="show_hide_button_container">
+        <div>&nbsp;</div>
+        <button type="button" id="show_hide_pwd">Show</button>
+      </div>
+    </div>
+    <span class="index_button_container">
+      <button
+        class="home_button"
+        type="button"
+        onclick="window.location.href='/'"
+      >
+        Cancel
+      </button>
+      <button class="login_button" type="submit" id="submit_button">
+        Sign In
+      </button>
+    </span>
+  </form>
+</main>
+<!---->
+<%- include('partials/footer') %>
+<script src="js/show_hide.js"></script>
